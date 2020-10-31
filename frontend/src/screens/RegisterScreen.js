@@ -18,7 +18,7 @@ function RegisterScreen(props) {
 
   useEffect(() => {
     if (userInfo) {
-      props.history.push("/seller-dashboard");
+      props.history.push("/signin");
     }
     return () => {
       //

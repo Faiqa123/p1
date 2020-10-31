@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
 import bodyParser from 'body-parser';
+import productRoute from './routes/productRoute';
 
 dotenv.config();
 
@@ -18,10 +19,12 @@ mongoose.connect( mongodbUrl, {
 const app=express(); 
 
 app.use(bodyParser.json());
-app.use("/api/users", userRoute);
 
-app.get("/api/products", (req, res) =>{
-    res.send(data.products);
-});
+app.use("/api/users", userRoute);
+app.use("/api/products", productRoute); 
+
+// app.get("/api/products", (req, res) =>{
+//     res.send(data.products);
+// });
 
 app.listen(5000, ()=>{console.log("Server started at http://localhost:5000")});

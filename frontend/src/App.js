@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ProductScreen from './screens/ProductScreen';
 import HomeScreen from './screens/HomeScreen';
 import SellerHomeScreen from './screens/SellerHomeScreen';
@@ -13,7 +13,7 @@ import SellerDashboardScreen from './screens/SellerDashboardScreen';
 function App() {
 
     const userSignin = useSelector(state => state.userSignin);
-    const {userInfo} = userSignin; 
+    const { userInfo } = userSignin;
 
     const openMenu = () => {
         document.querySelector(".sidebar").classList.add("open");
@@ -32,13 +32,13 @@ function App() {
                         <Link to="/">Parsell</Link>
                     </div>
                     <div className="header-links">
-                        <Link to="/seller-home">Sell on Parsell</Link> 
+                        <Link to="/seller-home">Sell on Parsell</Link>
                         <a href="cart.html">Cart</a>
                         {userInfo ? (
-                        <Link to="/profile">{userInfo.name}</Link>
+                            <Link to="/profile">{userInfo.name}</Link>
                         ) : (
-                        <Link to="/signin">SignIn</Link>
-                        )}
+                                <Link to="/signin">SignIn</Link>
+                            )}
                         {/* <a href="signin.html">SignIn</a> */}
                     </div>
                 </header>
@@ -56,19 +56,19 @@ function App() {
                 </aside>
                 <main className="main">
                     <div className="content">
-                        <Route path="/seller-dashboard" component={SellerDashboardScreen} /> 
-                        <Route path="/register" component={RegisterScreen} /> 
-                        <Route path="/seller-home" component={SellerHomeScreen} /> 
-                        <Route path="/signin" component={SigninScreen} /> 
+                        <Route path="/products" component={SellerDashboardScreen} />
+                        <Route path="/register" component={RegisterScreen} />
+                        <Route path="/seller-home" component={SellerHomeScreen} />
+                        <Route path="/signin" component={SigninScreen} />
                         <Route path="/product/:id" component={ProductScreen} />
                         <Route path="/" exact={true} component={HomeScreen} />
-                        
+
                     </div>
 
                 </main>
                 <footer className="footer">
                     All right reserved.
-    </footer>
+                </footer>
             </div>
         </BrowserRouter>
     );

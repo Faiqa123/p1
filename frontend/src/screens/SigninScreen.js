@@ -18,7 +18,7 @@ function SigninScreen(props) {
 
   useEffect(() => {
     if (userInfo) {
-      props.history.push("/seller-dashboard");
+      props.history.push("/products");
     }
     return () => {
       //

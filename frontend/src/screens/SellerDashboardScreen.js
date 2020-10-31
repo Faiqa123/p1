@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { listProducts, saveProduct } from '../actions/productActions';
+import { deleteProduct, listProducts, saveProduct } from '../actions/productActions';
 import { useSelector, useDispatch } from 'react-redux';
 // import axios from 'axios';
-
+  
 function SellerDashboardScreen(props) {
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -22,17 +22,20 @@ function SellerDashboardScreen(props) {
   const productSave = useSelector((state) => state.productSave);
   const { loading: loadingSave, success: successSave, error: errorSave } = productSave;
 
+  const productDelete = useSelector((state) => state.productDelete);
+  const { loading: loadingDelete, success: successDelete, error: errorDelete, } = productDelete;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (successSave) {
-    //   setModalVisible(false);
-    // }
+    if (successSave) {
+      setModalVisible(false);
+    }
     dispatch(listProducts());
     return () => {
       //
     };
-  }, []);
+  }, [successSave,successDelete]);
 
   const openModal = (product) => {
     setModalVisible(true);
@@ -62,12 +65,15 @@ function SellerDashboardScreen(props) {
     );
   };
 
+  const deleteHandler = (product) => {
+    dispatch(deleteProduct(product._id));
+  };
 
   return (<div className="content content-margined">
     <div className="product-header">
       <h3>Products</h3>
       <button className="button primary" onClick={() => openModal({})}>
-          Create Product
+        Create Product
         </button>
     </div>
     {modalVisible && (
@@ -159,7 +165,7 @@ function SellerDashboardScreen(props) {
               </button>
             </li>
             <li>
-              <button type="button" className="button secondary"  onClick={() => setModalVisible(false)}> Cancel</button>
+              <button type="button" className="button secondary" onClick={() => setModalVisible(false)}> Cancel</button>
             </li>
           </ul>
         </form>
@@ -187,17 +193,13 @@ function SellerDashboardScreen(props) {
               <td>{product.category}</td>
               <td>{product.brand}</td>
               <td>
-                
+
                 <button className="button" onClick={() => openModal(product)}>
                   Edit
               </button>{' '}
-              <button className="button">Delete</button>
-                {/* <button
-                  className="button"
-                  onClick={() => deleteHandler(product)}
-                >
+                <button className="button" onClick={() => deleteHandler(product)} >
                   Delete
-              </button> */}
+              </button>
               </td>
             </tr>
           ))}

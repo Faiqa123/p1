@@ -234,23 +234,8 @@ button:focus{outline:0;}
   font-weight: bold;
   color: red;
 }
-.mystyle1{
-  border: .5rem red solid;
-  /* position: fixed; */
-  /* transition: all 1s; */
-  /* transform: translate(50px,100px); */
-  /* transform: translateX(-30rem); */
-  /* width: 30rem; */
-  background-color: #f0f0f0;
-  height: 100%;
-}
-.mystyle2{
-  text-align: center;
-  padding: 1rem;
-  border: .5rem black solid;
-}
+
 /* Products */
-/* 
 .product-header {
   display: flex;
   justify-content: space-between;
@@ -269,4 +254,4 @@ th {
 }
 tbody > tr:nth-child(odd) {
   background-color: #f0f0f0;
-} */
+}

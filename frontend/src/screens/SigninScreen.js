@@ -60,7 +60,7 @@ function SigninScreen(props) {
           New to parsell?
         </li>
         <li>
-          <Link to="/seller-signin" className="button secondary text-center">Create your parsell account</Link>
+          <Link to="/register" className="button secondary text-center">Create your parsell account</Link>
         </li>
       </ul>
     </form>

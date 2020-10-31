@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function SellerHomeScreen(props){
     const handleSellerSignup =() =>{
-        props.history.push("/seller-signup")
+        props.history.push("/register")
     }
     return <div className="details-info" >
         <div className="back-to-result">   (Welcome to seller home page)</div>
